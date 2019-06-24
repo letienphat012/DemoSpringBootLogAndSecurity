@@ -1,0 +1,2 @@
+INSERT INTO course(id,name,description,price,start_date,end_date) VALUES ('1','Python','Python Course',100,'2019-10-11','2019-11-11');
+INSERT INTO student(id,name,phone_number,registration_date,birthday) VALUES ('1','John', '0123456789','2019-09-10','1997-02-10') ;

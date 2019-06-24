@@ -1,0 +1,7 @@
+2019-06-24 09:55:03.731  WARN 10832 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-06-24 09:55:26.396  WARN 10832 --- [http-nio-8080-exec-1] t.tft.phat.ss.controller.MainController  : This is WARN
+2019-06-24 09:55:26.396 ERROR 10832 --- [http-nio-8080-exec-1] t.tft.phat.ss.controller.MainController  : This is ERROR
+19-June-24 10:14:31:981  WARN main o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:237 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19-June-24 10:15:30:585  WARN http-nio-8080-exec-1 t.t.p.s.c.MainController:58 - This is WARN
+19-June-24 10:15:30:586 ERROR http-nio-8080-exec-1 t.t.p.s.c.MainController:59 - This is ERROR
+2019-06-24 10:30:10.644  WARN 10800 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

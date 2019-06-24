@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="base.definition"
+		template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="header"
+			value="/WEB-INF/basefragments/_header.jsp"></put-attribute>
+		<put-attribute name="menu"
+			value="/WEB-INF/basefragments/_menu.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/basefragments/_footer.jsp"></put-attribute>
+	</definition>
+
+	<definition name="homePage" extends="base.definition">
+		<put-attribute name="title" value="Home Page"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_home.jsp"></put-attribute>
+	</definition>
+
+	<definition name="contactusPage" extends="base.definition">
+		<put-attribute name="title" value="Contact Us"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_contactus.jsp"></put-attribute>
+	</definition>
+
+	<definition name="studentPage" extends="base.definition">
+		<put-attribute name="title" value="Student"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_student.jsp"></put-attribute>
+	</definition>
+
+	<definition name="studentEditPage" extends="base.definition">
+		<put-attribute name="title" value="Edit Student"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_student_edit.jsp"></put-attribute>
+	</definition>
+
+	<definition name="errPage" extends="base.definition">
+		<put-attribute name="title" value="Error"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_error.jsp"></put-attribute>
+	</definition>
+
+	<definition name="403" extends="base.definition">
+		<put-attribute name="title" value="403 Access deinied"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_403.jsp"></put-attribute>
+	</definition>
+
+	<definition name="login" extends="base.definition">
+		<put-attribute name="title" value="Login"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_login.jsp"></put-attribute>
+	</definition>
+
+	<definition name="adminPage" extends="base.definition">
+		<put-attribute name="title" value="Admin"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_admin.jsp"></put-attribute>
+	</definition>
+
+	<definition name="registerPage" extends="base.definition">
+		<put-attribute name="title" value="Register"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_register.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
