@@ -25,8 +25,10 @@ import tma.tft.phat.ss.services.StudentService;
 
 @Controller
 public class MainController {
-
+    //logback logger
 //    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+    
+    //log4j2 logger
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(MainController.class);
     
     @Autowired
@@ -52,7 +54,6 @@ public class MainController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
-        
         logger.trace("This is TRACE");
         logger.debug("This is DEBUG");
         logger.info("This is INFO");
@@ -62,6 +63,7 @@ public class MainController {
         logger.error("This is ERROR");
         logger.warn("This is WARN");
         logger.error("This is ERROR");
+//        logger.fatal("This is FALTAL");
         return "login";
     }
 

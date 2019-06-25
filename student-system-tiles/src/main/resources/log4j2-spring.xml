@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="warn">
     <Properties>
-        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n
-        </Property>
+        <Property name="LOG_PATTERN_CONSOLE">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+        <Property name="LOG_PATTERN_FILE">%d{yyyy-MM-dd'T'HH:mm:ss.SSS Z} %p %m%n</Property>
         <Property name="APP_LOG_ROOT">c:/temp</Property>
     </Properties>
 
@@ -11,7 +11,7 @@
         <!-- This Appender use to print log to console -->
         <Console name="Console" target="SYSTEM_OUT"
             follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}" />
+            <PatternLayout pattern="${LOG_PATTERN_CONSOLE}" />
         </Console>
 
         <!-- This Appender use to write log to file with specific policy -->
@@ -19,7 +19,7 @@
             fileName="${APP_LOG_ROOT}/SpringBoot2App/application.log"
             filePattern="${APP_LOG_ROOT}/SpringBoot2App/application-%d{yyyy-MM-dd}-%i.log">
 
-            <PatternLayout pattern="${LOG_PATTERN}" />
+            <PatternLayout pattern="${LOG_PATTERN_FILE}" />
 
             <Policies>
                 <SizeBasedTriggeringPolicy
@@ -35,13 +35,14 @@
     <Loggers>
 
         <Logger name="tma.tft.phat.ss.controller"
-            additivity="false">
+            additivity="false" level="error">
             <AppenderRef ref="RollingFile" />
             <AppenderRef ref="Console" />
         </Logger>
-
-        <Root level="info">
+		
+        <Root level="error">
             <AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
         </Root>
     </Loggers>
 </Configuration>
