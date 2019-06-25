@@ -21,7 +21,8 @@
 
     <dependencies>
     
-    <!-- This dependency will exclude logback -->
+    <!-- This dependency will exclude logback if use log4j2-->
+    <!-- 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -32,14 +33,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
-  
+         -->
   <!-- Add log4j2 dependency, if use this, use above dependency to exclude logback or it will cause exception-->
-   
+  <!-- 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-  
+         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
