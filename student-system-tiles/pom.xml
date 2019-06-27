@@ -14,33 +14,28 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>student-system-tiles</name>
     <description>Demo project for Spring Boot</description>
-
+    <repositories>
+        <repository>
+            <id>repository.spring.milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
     <properties>
+        <spring-social-facebook.version>3.0.0.M3</spring-social-facebook.version>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-    
-    <!-- This dependency will exclude logback if use log4j2-->
-    <!-- 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-         -->
-  <!-- Add log4j2 dependency, if use this, use above dependency to exclude logback or it will cause exception-->
-  <!-- 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-         -->
+
+        <!-- This dependency will exclude logback if use log4j2 -->
+        <!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter</artifactId> 
+            <exclusions> <exclusion> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-logging</artifactId> 
+            </exclusion> </exclusions> </dependency> -->
+        <!-- Add log4j2 dependency, if use this, use above dependency to 
+            exclude logback or it will cause exception -->
+        <!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-log4j2</artifactId> 
+            </dependency> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -71,6 +66,61 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.13</version>
+        </dependency>
+
+        <!-- OAuth2 Client -->
+        <!-- <dependency> <groupId>org.springframework.security</groupId> 
+            <artifactId>spring-security-oauth2-client</artifactId> </dependency> <dependency> 
+            <groupId>org.springframework.security</groupId> <artifactId>spring-security-oauth2-jose</artifactId> 
+            </dependency> -->
+        <!-- JWT library -->
+        <!-- <dependency> <groupId>io.jsonwebtoken</groupId> <artifactId>jjwt</artifactId> 
+            <version>0.5.1</version> </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-core -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-core</artifactId>
+            <version>1.1.6.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-web -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-web</artifactId>
+            <version>1.1.5.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-config -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-config</artifactId>
+            <version>1.1.6.RELEASE</version>
+        </dependency>
+        <!-- <dependency> <groupId>org.springframework.security.oauth.boot</groupId> 
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId> <version>2.0.0.RELEASE</version> 
+            </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.5.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-security -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+            <version>1.1.6.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-google -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-google</artifactId>
+            <version>1.0.0.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-facebook -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+            <version>${spring-social-facebook.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>

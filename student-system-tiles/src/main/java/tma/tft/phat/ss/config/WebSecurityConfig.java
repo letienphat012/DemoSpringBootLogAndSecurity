@@ -1,4 +1,4 @@
-package tma.tft.phat.ss.security;
+package tma.tft.phat.ss.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.social.security.SpringSocialConfigurer;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService)
+        .passwordEncoder(passwordEncoder())
+        ;
     }
 
     @Bean
@@ -30,12 +34,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/register").permitAll().antMatchers("/").hasRole("MEMBER")
-                .antMatchers("/admin").hasRole("ADMIN").antMatchers("/student").hasRole("MEMBER")
-                .antMatchers("/student/**").hasRole("ADMIN").antMatchers("/course/**").hasRole("ADMIN").and()
-                .formLogin().loginPage("/login").usernameParameter("email").passwordParameter("password")
-                .defaultSuccessUrl("/").failureUrl("/login?error").and().exceptionHandling().accessDeniedPage("/403");
-
+        http.csrf().disable();
+        http.authorizeRequests()
+            .antMatchers("/register","/login","/logout").permitAll()
+            .antMatchers("/").hasRole("MEMBER")
+            .antMatchers("/admin").hasRole("ADMIN")
+            .antMatchers("/student").hasRole("MEMBER")
+            .antMatchers("/student/**").hasRole("ADMIN")
+            .antMatchers("/course/**").hasRole("ADMIN").and()
+        .formLogin()
+            .loginPage("/login")
+            .usernameParameter("email").passwordParameter("password")
+            .defaultSuccessUrl("/")
+            .failureUrl("/login?error")
+            .and()
+        .logout()
+            .logoutSuccessUrl("/")
+        .and()
+            .exceptionHandling()
+            .accessDeniedPage("/403");
+        http.apply(new SpringSocialConfigurer());
     }
 
+    
 }

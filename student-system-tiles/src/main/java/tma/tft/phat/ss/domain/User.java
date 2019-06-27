@@ -1,6 +1,7 @@
 package tma.tft.phat.ss.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class User implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
             @JoinColumn(name = "role_id") })
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     public int getId() {
         return id;

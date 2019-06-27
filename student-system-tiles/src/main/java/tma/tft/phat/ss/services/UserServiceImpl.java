@@ -1,8 +1,14 @@
 package tma.tft.phat.ss.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.eclipse.jdt.internal.compiler.env.IModule.IService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,9 +23,13 @@ import tma.tft.phat.ss.domain.Role;
 import tma.tft.phat.ss.domain.User;
 import tma.tft.phat.ss.repositories.RoleRepository;
 import tma.tft.phat.ss.repositories.UserRepository;
+import tma.tft.phat.ss.social.SocialUserDetailsImpl;
+//import tma.tft.phat.ss.social.SocialUserDetailsImpl;
 
 @Service
 public class UserServiceImpl implements CustomUserDetailService {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -38,19 +48,23 @@ public class UserServiceImpl implements CustomUserDetailService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
         if (user == null) {
+            logger.error("User {} not found", username);
             throw new UsernameNotFoundException("User not found");
         }
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
+        logger.info("Found user {}", user);
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 
         Set<Role> roles = user.getRoles();
 
         for (Role role : roles) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-                grantedAuthorities);
+        logger.info("create social user detail with roles {}", Arrays.toString(grantedAuthorities.toArray()));
+         SocialUserDetailsImpl socialUserDetails = new SocialUserDetailsImpl(user,
+         grantedAuthorities);
+        return socialUserDetails;
+//        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),grantedAuthorities);
     }
 
     @Override

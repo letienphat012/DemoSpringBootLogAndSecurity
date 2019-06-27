@@ -11,12 +11,18 @@
 				<a href="${logoutUrl}" class="btn btn-danger">Logout</a>
 			</sec:authorize>
 			<sec:authorize access="!isAuthenticated()">
+				<c:url value="/auth/google" var="googleLogin"></c:url>
+				<c:url value="/auth/facebook" var="facebookLogin"></c:url>
 				<c:url value="/login" var="loginUrl"></c:url>
 				<c:url value="/register" var="registerUrl"></c:url>
 				<a href="${loginUrl}" class="btn btn-success">Login</a>
 				<a href="${registerUrl}" class="btn btn-primary">Register</a>
+				<a href="${googleLogin}" class="btn btn-primary">Login with
+					Google</a>
+				<a href="${facebookLogin}" class="btn btn-primary">Login with
+					Facebook</a>
 			</sec:authorize>
-			
+
 
 
 		</div>

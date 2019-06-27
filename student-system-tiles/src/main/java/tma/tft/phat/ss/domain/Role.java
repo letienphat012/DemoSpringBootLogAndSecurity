@@ -1,6 +1,7 @@
 package tma.tft.phat.ss.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 @Table(name = "ROLE")
 public class Role implements Serializable {
 
+    public static final String ROLE_MEMBER = "ROLE_MEMBER";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,7 +27,7 @@ public class Role implements Serializable {
     private String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-    private Set<User> users;
+    private Set<User> users = new HashSet<>();
 
     public int getId() {
         return id;
