@@ -1,7 +1,9 @@
 package tma.tft.phat.ss.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -71,4 +73,11 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
+    public List<String> getRoleStrings(){
+        List<String> roleStrings = new ArrayList<String>();
+        for (Role role : roles) {
+            roleStrings.add(role.getName());
+        }
+        return roleStrings;
+    }
 }

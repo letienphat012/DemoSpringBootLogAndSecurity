@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+
 @Entity
 @Table(name = "ROLE")
 public class Role implements Serializable {
